@@ -49,5 +49,7 @@
 * 例： tail -f kuaidaili_test.py
 ##### 3.数据库分析脚本-analysis.py
 * 例:  python3 analysis.py
+##### 4.配置文件-config.py
+##### 5.建表sql语句-sql.txt
 
 

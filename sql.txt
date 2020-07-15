@@ -1,0 +1,40 @@
+CREATE DATABASE `tunnel_test` CHARACTER SET utf8;
+
+create user 'tunnel_test'@'*' identified by 'tunnel_test';
+grant all privileges on `tunnel_test`.* to 'test'@'%' identified by 'tunnel_test';
+
+use tunnel_test;
+
+CREATE TABLE `tunnel_info1` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `resp_speed` float DEFAULT NULL,
+  `supplier` char(20) DEFAULT NULL,
+  `target_url` char(50) DEFAULT NULL,
+  `proxy_ip` char(25) DEFAULT NULL,
+  `location` char(50) DEFAULT NULL,
+  `prov` char(20) DEFAULT NULL,
+  `city` char(20) DEFAULT NULL,
+  `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_ok` tinyint(4) DEFAULT NULL,
+  `request_method` char(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `supplier` (`supplier`),
+  KEY `resp_speed` (`resp_speed`),
+  KEY `proxy_ip` (`proxy_ip`),
+  KEY `is_ok` (`is_ok`),
+  KEY `created_time` (`created_time`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `tunnel_info2` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `download_url` char(100) DEFAULT NULL,
+  `bandwidth` float DEFAULT NULL,
+  `is_ok` tinyint(4) DEFAULT NULL,
+  `timeout` smallint(6) DEFAULT NULL,
+  `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `supplier` char(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `supplier` (`supplier`),
+  KEY `is_ok` (`is_ok`),
+  KEY `created_time` (`created_time`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
