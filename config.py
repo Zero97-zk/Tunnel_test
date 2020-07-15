@@ -32,8 +32,8 @@ xundaili_tunnel = "forward.xdaili.cn:80"
 
 
 # mysql config
-db_username = "root"
-db_password = "123456"
+db_username = "tunnel_test"
+db_password = "tunnel_test"
 db_name = "tunnel_test"
 
 

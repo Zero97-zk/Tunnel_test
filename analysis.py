@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 import prettytable as pt
-
 from utils import get_db_local
-
-
 
 def get_analysis(db):
     cursor = db.execute("SELECT supplier, count(*) from `tunnel_info1` GROUP BY	supplier;")
