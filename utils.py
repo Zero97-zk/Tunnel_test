@@ -355,9 +355,11 @@ class BaseCheck:
     def base_test(self, db):
         t1 = self.now()
         try:
+            # t_start = self.now()
             resp = requests.get(self.check_url, headers=self.headers,
                                 proxies=self.proxies,
                                 timeout=8, verify=False)
+            # resp_speed = self.now() - t_start
             if resp.status_code == 200:
                 ip_infos = self.re.findall(resp.text)[0].split('\n')
                 proxy_ip = ip_infos[0].strip()
@@ -369,6 +371,7 @@ class BaseCheck:
                 elif len(location_split) == 2:
                     city = location_split[1]
                 resp_speed = resp.elapsed.total_seconds()
+                resp_speed = round(resp_speed, 2)
                 self.log.info(
                     'proxy_ip:%(proxy_ip)s, prov:%(prov)s, city:%(city)s, resp_speed:%(resp_speed)s' % {
                         "proxy_ip": proxy_ip, "prov": prov, "city": city,
